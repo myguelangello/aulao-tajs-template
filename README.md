@@ -32,6 +32,29 @@ Token capturado: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZXJpY2t3ZW5kZW
 Resposta da rota privada: {"result":"Hey welcome!"}
 ```
 
+## Snippets
+
+### Mockando o Request
+```js
+  const mockRequest = ({ url, method, headers, body }) => {
+  const options = {
+    url: url ?? '/',
+    method: method ?? 'GET',
+    headers: headers ?? {},
+  }
+
+  const request = new EventEmitter()
+
+  request.url = options.url
+  request.method = options.method
+  request.headers = options.headers
+
+  setInterval(() => request.emit('data', JSON.stringify(body)))
+
+  return request
+}
+```
+
 ## Valeu
 - Considere me seguir nas redes sociais e deixar um star nesse projeto!
 - Valeu!
